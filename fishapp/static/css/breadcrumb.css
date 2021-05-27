@@ -1,0 +1,122 @@
+
+/* Breadcrumb */
+
+
+ .breadcrumb.custom>li+li:before {
+     content: "" !important
+ }
+
+ .breadcrumb.custom {
+     padding: 10px 0 25px 0;
+     font-size: 0;
+     color: #aaa !important;
+     letter-spacing: 0px;
+     border-radius: 5px !important
+ }
+.breadcrumb-item.custom:before{
+	display: none;
+}
+ .first-1 {
+     background-color: white !important
+ }
+
+ .brcra {
+     text-decoration: none !important;
+     color: #aaa !important
+ }
+
+ .brcra:focus,
+ .brcra:active {
+     outline: none !important;
+     box-shadow: none !important
+ }
+
+.brcrim {
+    vertical-align: bottom;
+    opacity: 0.3
+}
+
+ .first span {
+     color: black
+ }
+
+ .active-1,
+ .active-2 {
+     font-size: 12px !important;
+     padding-bottom: 9px !important;
+     padding-top: 9px !important;
+     padding-right: 20px !important;
+     padding-left: 20px !important;
+     border-radius: 200px !important;
+     background-color: #f2f2f2 !important;
+ }
+
+ #home {
+     vertical-align: middle !important;
+     margin: 0 8px 4px 0;
+ }
+
+ @media (max-width: 567px) {
+     .breadcrumb.custom {
+         font-size: 9px;
+     }
+
+     .breadcrumb-item.custom+.breadcrumb-item.custom {
+         padding-left: 0
+     }
+
+     .brcrim {
+         width: 11px;
+         height: 11px;
+         vertical-align: middle
+     }
+
+     #home {
+         vertical-align: middle !important;
+         width: 12px;
+         height: 10px
+     }
+
+     .active-1,
+     .active-2 {
+         font-size: 7px !important;
+         padding-right: 8px !important;
+         padding-left: 8px !important;
+         background-color: #f2f2f2 !important;
+         width: 100% !important
+     }
+
+     .breadcrumb.custom {
+         letter-spacing: 0px !important;
+         padding: 26px;
+         padding-left: 6px !important;
+         padding-right: 6px !important
+     }
+
+     .breadcrumb.custom>* div {
+         max-width: 60px
+     }
+
+     li.breadcrumb-item.custom {
+         padding: 0 !important
+     }
+ }
+
+ @media (max-width: 976px) {
+
+     .active-1,
+     .active-2 {
+         font-size: 8px !important;
+         background-color: #f2f2f2 !important;
+         width: 100% !important
+     }
+
+     .breadcrumb.custom {
+         letter-spacing: 0px !important;
+         padding: 26px
+     }
+
+     li.breadcrumb-item.custom {
+         padding: 0 !important
+     }
+ }

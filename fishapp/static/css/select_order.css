@@ -1,0 +1,91 @@
+
+/* Select */
+
+.select {
+    display: block;
+    max-width: 365px;
+    width: 100%;
+    /*height: 80px;*/
+    position: relative;
+    top: 0;
+    right: 0;
+    z-index: 10;
+
+    border: 1px solid #d5d5d6;
+    background-color: #fff;
+}
+
+.new-select {
+    /*position: relative;*/
+    font-weight: 500;
+    width: 85%;
+    word-wrap: break-word;
+    /*position: absolute;*/
+    /*top: 50%;*/
+    /*left: 50%;*/
+    /*z-index: 100101;*/
+    /*transform: translate3d(-50%, -50%, 0);*/
+    /*border: 1px solid #ced4da;*/
+    padding: 10px 15px;
+    cursor: pointer;
+    user-select: none;
+    background-color: #fff;
+}
+
+.new-select__list {
+    position: absolute;
+    /*position: relative;*/
+    /*top: 45px;*/
+    top: 100%;
+    left: 0;
+    border: 1px solid #ced4da;
+    cursor: pointer;
+    width: 100%;
+    z-index: 110101;
+    background: #fff;
+    user-select: none;
+}
+
+.new-select__list.on {
+    display: block;
+}
+
+.new-select__item span {
+	/*font-weight: bold;*/
+    display: block;
+    padding: 10px 15px;
+}
+
+.new-select__item span:hover {
+    color: #ffbd10;
+}
+
+.new-select:after {
+    color: #fff;
+    content: '';
+    display: block;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    right: 9px;
+    top: 9px;
+    background: url('../../../assets/images/arr.png') no-repeat right center / cover;
+    opacity: 0.6;
+
+    -webkit-transition: all .27s ease-in-out;
+        -o-transition: all .27s ease-in-out;
+            transition: all .27s ease-in-out;
+
+    -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+         -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+}
+
+.new-select.on:after {
+    -webkit-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+         -o-transform: rotate(180deg);
+            transform: rotate(180deg);
+}
+

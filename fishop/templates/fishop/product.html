@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
+
+	<title>Born to Fish - Магазин</title>
+
+	<link rel="stylesheet" type="text/css" href="../../../fishapp/static/css/catalog.css">
+	<link rel="stylesheet" href="custom-price-range-slider-master/pricerange.css">
+	<link rel="stylesheet" href="../../../fishapp/static/css/breadcrumb.css">
+	<link rel="stylesheet" href="../../../fishapp/static/css/select.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+<body>
+
+<header id="header" class="header">
+	<div class="container">
+		<div class="header__inner">
+			<a href="#" class="header__logo" data-scroll="#intro"><img src="../../../assets/images/LogoUK_cropped.png" alt=""></a>
+			<nav id="header-nav1" class="header-nav1">
+				<a class="nav__link" href="#" data-click=''>На сайт</a>
+				<a class="nav__link active" href="#" data-click=''>Магазин</a>
+				<!-- <a class="nav__link" href="#">Бренди</a> -->
+				<a class="nav__link" href="#" data-click=''>Публічна оферта</a>
+				<a class="nav__link" href="#" data-click=''>Гарантія</a>
+				<a class="nav__link" href="#" data-click=''>Контакти</a>
+			</nav>
+
+			<form id="header_mobile_search_form" method="GET" action="" class="header_mobile_search_form">
+				<input type="search" id="mobile_search_input" name="mobile_search_input" placeholder="Що шукаєш?">
+				<button id="mobile_search_button" type="submit" class="btn btn-light"><i class="fas fa-search"></i></button>
+			</form>
+
+			<div id="header_breadcrumb" class="header_breadcrumb hidden">
+				<div class="font-up-bold text-uppercase">
+					<nav aria-label="breadcrumb MY">
+					  <ol class="breadcrumb bg-transparent justify-content-center br_items text-white MY">
+					    <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
+					    <li class="breadcrumb-item"><a class="text-white" href="#">Library</a></li>
+					    <li class="breadcrumb-item active text-white" aria-current="page">Data</li>
+					  </ol>
+					</nav>
+				</div>
+			</div>
+
+			<nav class="header-nav2">
+				<!-- <a class="nav__link" href="#">Профіль</a> -->
+			
+				<a class="nav__link" href="#">
+					<div class="bdg">
+						<img src="../../../assets/images/header/Cart.png" alt="" >
+						<span class="badge badge-pill badge-light cartbadge">2</span>
+					</div>
+				</a>
+				<a id="header_search_a" class="nav__link" href="#"><img src="../../../assets/images/header/Search.png" alt=""></a>
+			</nav>
+
+			<button class="nav-toggle" id="nav-toggle" type="button">
+				<span class="nav-toggle__item">Menu</span>
+			</button>
+		</div> <!-- ./header__inner -->
+
+
+	</div> <!-- ./container -->
+</header>
+
+
+<div id="intro" class="intro">
+
+	<div class="container">
+		<div class="intro__inner">
+			<div class="intro__title">Магазин ТМ</div>
+			<div class="intro__subtitle">New Arrival</div>
+			<!-- <a href="#" class="badge badge-pill badge-primary intro__btn">В магазин</a> -->
+			<form action="#">
+				<input class="intro__search" type="text" placeholder="Що шукаєш?">
+			</form>
+
+			<div class="font-up-bold text-uppercase">
+				<nav aria-label="breadcrumb MY">
+				  <ol class="breadcrumb bg-transparent justify-content-center br_items text-white MY">
+				    <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
+				    <li class="breadcrumb-item"><a class="text-white" href="#">Library</a></li>
+				    <li class="breadcrumb-item active text-white" aria-current="page">Data</li>
+				  </ol>
+				</nav>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="intro__categories">
+	<a  href="#" class="intro__category">
+		<span>Вудилища</span>
+	</a>
+	<a href="#" class="intro__category">
+		<span>Котушки</span>
+	</a>
+	<a  href="#" class="intro__category">
+		<span>Електроніка</span>
+	</a>
+	<a href="#" class="intro__category">
+		<span>Екіпірування</span>
+	</a>
+	<a  href="#" class="intro__category">
+		<span>Одяг та взуття</span>
+	</a>
+	<a href="#" class="intro__category">
+		<span>Туризм</span>
+	</a>
+	<a href="#" class="intro__category">
+		<span>Стільці та крісла</span>
+	</a>
+</div>
+
+
+<section class="section">
+	<div class="container">
+
+		<div class="content">
+
+			<div class="sidebar">
+				<div class="sidebar__item  sidebar__item--for_product">
+					<div class="sidebar__header">
+						<span>Категорії товарів</span>
+						<a href="#"><span class="menu__criss-cross">&#10008;</span></a>
+					</div>
+					<nav class="sidebar__nav">
+						<div class="snav__group">
+							<div class="mainlink active">
+								<a class="snav__mainlink" href="#"><div class="snav__marker"></div>Вудилища</a>
+								<a class="snav__link" href="#">Спінінги</a>
+								<a class="snav__link active" href="#">Фідерні вудилища</a>
+								<a class="snav__link" href="#">Болонські вудилища</a>
+								<a class="snav__link" href="#">Карпові</a>
+							</div>
+						</div>
+						<div class="snav__group">
+							<div class="mainlink">
+								<a class="snav__mainlink" href="#"><div class="snav__marker"></div>Котушки</a>
+								<a class="snav__link" href="#">Безінерційні</a>
+								<a class="snav__link" href="#">З бейтраннером</a>
+								<a class="snav__link" href="#">Мультиплікаторні котушк</a>
+							</div>
+						</div>
+						<div class="snav__group">
+							<a class="snav__mainlink" href="#"><div class="snav__marker"></div>Електроніка для рибалки та туризму</a>
+						</div>
+						<div class="snav__group">
+							<a class="snav__mainlink" href="#"><div class="snav__marker"></div>Екіпірування</a>
+						</div>
+						<div class="snav__group">
+							<a class="snav__mainlink" href="#"><div class="snav__marker"></div>Одяг та взуття</a>
+						</div>
+						<div class="snav__group">
+							<a class="snav__mainlink" href="#"><div class="snav__marker"></div>Туризм</a>
+						</div>
+						<div class="snav__group">
+							<a class="snav__mainlink" href="#"><div class="snav__marker"></div>Стільці та крісла</a>
+						</div>
+					</nav>
+				</div>
+
+				<div class="sidebar__item sidebar__item--for_product">
+					<div class="sidebar__header">
+						<span>Топ продажів</span>
+						<a href="#"><span class="menu__criss-cross">&#10008;</span></a>
+					</div>
+					<div class="sidebar__products">
+						<div class="sidebar__product">
+							<div class="badge badge-pill sidebar__label">Топ продаж</div>
+							<a href="#" class="sidebar__imgblock">
+								<img class="sidebar__img" src="https://images.ua.prom.st/1220510243_w200_h200_fiderna-kotushka-energofish.jpg"alt="">
+							</a>
+							<a href="#" class="sidebar__title">
+								<span href="#">Фідерна прикормка Fanatic Method</span>
+							</a>
+							<div class="sidebar__description">
+								Код: <span>111235</span>
+							</div>
+							<div class="sidebar__price">
+								<div class="grey__group">
+										<span class="grey_price">39 грн.</span>
+										<a href="#" class="reviews">15 відгуків</a>
+									</div>
+								<span class="price">22 грн.</span>
+							</div>
+							<a class="badge badge-pill sidebar__tocart" href="#"><span>У кошик</span></a>
+						</div>
+
+						<div class="sidebar__product">
+							<div class="badge badge-pill sidebar__label">Топ продаж</div>
+							<a href="#" class="sidebar__imgblock">
+								<img class="sidebar__img" src="https://images.ua.prom.st/1154308701_w200_h200_mahovoe-udilische-energofish.jpg"alt="">
+							</a>
+							<a href="#" class="sidebar__title">
+								<span href="#">Фідерна прикормка Fanatic Method</span>
+							</a>
+							<div class="sidebar__description">
+								Код: <span>111235</span>
+							</div>
+							<div class="sidebar__price">
+								<div class="grey__group">
+										<span class="grey_price">39 грн.</span>
+										<a href="#" class="reviews">15 відгуків</a>
+									</div>
+								<span class="price">22 грн.</span>
+							</div>
+							<a class="badge badge-pill sidebar__tocart" href="#"><span>У кошик</span></a>
+						</div>
+
+						<div class="sidebar__product">
+							<div class="badge badge-pill sidebar__label">Топ продаж</div>
+							<!-- <img src="http://dummyimage.com/195x100&text=Без+фото"> -->
+							<a href="#" class="sidebar__imgblock">
+								<img class="sidebar__img" src="../../../media/no-camera--v1.png" style="max-height: 90px;">
+							</a>
+							<a href="#" class="sidebar__title">
+								<span href="#">Фідерна прикормка Fanatic Method</span>
+							</a>
+							<div class="sidebar__description">
+								Код: <span>111235</span>
+							</div>
+							<div class="sidebar__price">
+								<div class="grey__group">
+										<span class="grey_price">39 грн.</span>
+										<a href="#" class="reviews">15 відгуків</a>
+									</div>
+								<span class="price">22 грн.</span>
+							</div>
+							<a class="badge badge-pill sidebar__tocart" href="#"><span>У кошик</span></a>
+						</div>
+
+
+					</div>
+				</div>
+
+				<div class="sidebar__item sidebar__item--for_product">
+					<div class="sidebar__header">
+						<span>Ви переглядали</span>
+						<a href="#"><span class="menu__criss-cross">&#10008;</span></a>
+					</div>
+					<div class="sidebar__products">
+						<div class="sidebar__product">
+							<a href="#" class="sidebar__imgblock">
+								<img class="sidebar__img" src="../../../media/no-camera--v1.png" style="max-height: 90px;">
+							</a>
+							<a href="#" class="sidebar__title">
+								<span href="#">Удилище Shark Lanay Pole 4м Carbon IM-7</span>
+							</a>
+							<div class="sidebar__description">
+								Код: <span>111235</span>
+							</div>
+							<div class="sidebar__price">
+								<div class="grey__group">
+									<span class="grey_price">39 грн.</span>
+									<a href="#" class="reviews">15 відгуків</a>
+								</div>
+								<span class="price">22 грн.</span>
+							</div>
+							<a class="badge badge-pill sidebar__tocart" href="#"><span>У кошик</span></a>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			<div class="main main--for_product">
+				
+				 <div class="d-flex justify-content-left">
+				     <nav aria-label="breadcrumb custom" class="first d-md-flex">
+				         <ol class="breadcrumb indigo lighten-6 first-1 custom">
+				             <li class="breadcrumb-item custom"><a class="brcra black-text active-2" href="#"><img id="home" class="brcrim" src="https://img.icons8.com/ios-filled/50/000000/dog-house.png" class="mr-md-2 mr-1" width="22" height="19"><span>HOME</span></a><img class="brcrim md-3 ml-1" src="https://img.icons8.com/metro/50/000000/chevron-right.png " width="20" height="20"> </li>
+				             <li class="breadcrumb-item custom"><a class="brcra black-text active-2" href="#"><span>Cooking</span></a><img class="brcrim md-3 ml-1" src="https://img.icons8.com/metro/50/000000/chevron-right.png " width="20" height="20"></li>
+				             <li class="breadcrumb-item custom"><a class="brcra black-text active-2 " href="#"><span>Baking</span></a><img class="brcrim md-3 ml-1" src="https://img.icons8.com/metro/50/000000/chevron-right.png " width="20" height="20"> </li>
+				             <li class="breadcrumb-item mr-0 pr-0 custom"><a class="brcra black-text active-1 active-2" href="#"><span>Спиннинг Wizard...</span></a> </li>
+				         </ol>
+				     </nav>
+				 </div>
+
+				<div class="product">
+					<div class="product_title">Вудлище SONIK DOMINATOR-X Spod+Marker HYBRID 13</div>
+
+					<div class="product_photoblock">
+						<!-- <img class="product_photo" src="no-camera--v1.png" alt="no-photo"> -->
+						<img class="product_photo" src="https://images.ua.prom.st/2662681094_w640_h640_vudlische-sonik-dominator-x.jpg" alt="no-photo">
+					</div>
+
+					<div class="product_info">
+						<div class="product_priceblock">
+							<div class="product_actual_price">
+								<span class="product_price">420</span>
+								<span class="product_currency">грн.</span>
+							</div>
+
+							<div class="product_discount_price">
+								<span class="product_greyprice">530</span>
+								<span class="product_currency_greyprice">грн.</span>
+							</div>
+						</div>
+
+						<hr class="product_hr">
+						
+						<div class="product_artykul">
+							Артикул:
+							<span class="product_code">111272</span>
+						</div>
+
+						<hr>
+						
+						
+						<a href="#" class='product_tocart'><span class="tocart_text">У кошик</span></a>
+
+						<div class="product_contacts">
+							Контакти:
+							<span class="product_contacts_list">+380972618530, +380930175467</span>
+						</div>
+
+						<hr class="product_bold_hr">
+					
+					</div>
+
+					<div class="product_description">
+						<p>
+						Котушка Bokor Spin угорської компанії Energofish розроблена разом з відомим угорським професіоналом рибалкою Каролем Бокором (Karoly Bokor), має ідеальний і дуже плавний хід, практично без опору, завдяки 10 підшипників. Головна перевага котушки Bokor Spin це велика чутливість і прямий контакт з приманкою. Відчувайте і миттєво реагуйте на будь підозріле зміна в проводці. Котушка має швидкий передній фрикціон і зручну ручку для обертання з можливістю право/лівосторонньої установки. Котушка розроблялася з упором на легкий вага і міцність, так само багато уваги приділили плавності ходу і надійності механізму.</p>
+						<P>Всі деталі котушки продумані до дрібниць і важить вона всього 250 грам, а це для типорозміру 2500 небагато. Невелика вага котушки дозволить вам вибирати з більшості спінінгів даного класу і скомбінувати ідеальний комплект спінінг+котушка. Вся конструкція котушки полегшена від шпулі і дужки лескоукладывателя до ручки котушки і ручки катушкотримача. Котушка Bokor Spin виготовлено з графіту, що робить її легкою, але в той же час надійної, у важких умовах експлуатації.</P>
+						<p>Благодаря специальному дизайну шпули вы можете разместить большое количество лески. Легкая основная шпуля, изготовлена из алюминия. Имеет в комплекте запасную металлическую шпуля. В комплекте имеется неопреновый чехол для хранения и транспортировки катушки.</p>
+						<p><p><strong>Особливості:</strong><br>
+						— Легка і компактна<br>
+						— Сучасний стильний і продуманий дизайн<br>
+						— Полегшений дизайн (вся конструкція має продумані отвори)<br>
+						— Передній фрикційне гальмо FD (з микрорегулировкой)<br>
+						— Швидкий фрикціон (повністю затискається/розтискається за один поворот)<br>
+						— Невелика вага (250 грам)<br>
+						— Передаточне число - 5.2:1<br>
+						— 10BB + 1RB підшипників<br>
+						— Миттєвий антиреверс (стопор зворотного ходу)<br>
+						— Вмикач анти реверсу прапорцевий нижній<br>
+						— Комп'ютерна балансування<br>
+						— Аеродинамичний ротор<br>
+						— Якісні матеріали<br>
+						— Матеріал корпусу графіт<br>
+						— Міцна цілісна полегшена ручка<br>
+						— Полегшена основна алюмінієва шпуля<br>
+						— Запасна металева шпуля в комплекті<br>
+						— Ролик лесоукладывателя конусний збільшений (протизакручувач)<br>
+						— Дужка лесоукладывателя порожниста міцна (полегшена)<br>
+						— Рукоятка з гвинтовим типом фіксації<br>
+						— Ергономічна Ручка з неопрену<br>
+						— Ручка з можливістю право/лівосторонньої установки<br>
+						— Місткість шпулі 0.20 мм / 300 м; 0.25 мм / 190 м; 0.30 мм / 130 м<br>
+						— Неопреновий чохол в комплекті</p></p>
+					</div>
+					
+				</div>
+
+				<nav>
+				  <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+				    <a class="nav-link active text-info" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Умови оплати та доставки</a>
+				    <a class="nav-link text-info" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Графік роботи</a>
+				    <a class="nav-link text-info" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Умови повернення та обміну</a>
+				  </div>
+				</nav>
+				<div class="tab-content" id="nav-tabContent">
+				  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">Умови оплати та доставки...</div>
+				  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">Графік роботи...</div>
+				  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">Умови повернення та обміну...</div>
+				</div>
+
+				
+
+				<div class="recommend">
+					<!-- <div class="recommend__group">
+						<div class="recommend__item">
+							
+						</div>
+					</div> -->
+					<div class="sidebar__item sidebar__item--for_product sidebar__item--for_recommend">
+						<h2 class="recommend__title">Інші товари цієї категорії</h2>
+					
+						<div class="sidebar__products sidebar__products--for_recommend">
+							<div class="sidebar__product">
+								<div class="badge badge-pill sidebar__label sidebar__label--recommend">Топ продаж</div>
+								<a href="#" class="sidebar__imgblock">
+									<img class="sidebar__img" src="https://images.ua.prom.st/1220510243_w200_h200_fiderna-kotushka-energofish.jpg" alt="">
+								</a>
+								<a href="#" class="sidebar__title">
+									<span href="#">Фідерна прикормка Fanatic Method</span>
+								</a>
+								<div class="sidebar__description">
+									Код: <span>111235</span>
+								</div>
+								<div class="sidebar__price">
+									<div class="grey__group">
+										<span class="grey_price">39 грн.</span>
+										<a href="#" class="reviews">15 відгуків</a>
+									</div>
+									<span class="price">22 грн.</span>
+								</div>
+								<a class="badge badge-pill sidebar__tocart" href="#"><span>У кошик</span></a>
+							</div>
+
+							<div class="sidebar__product">
+								<div class="badge badge-pill sidebar__label sidebar__label--recommend">Топ продаж</div>
+								<a href="#" class="sidebar__imgblock">
+									<img class="sidebar__img" src="https://images.ua.prom.st/1220510243_w200_h200_fiderna-kotushka-energofish.jpg" alt="">
+								</a>
+								<a href="#" class="sidebar__title">
+									<span href="#">Фідерна прикормка Fanatic Method</span>
+								</a>
+								<div class="sidebar__description">
+									Код: <span>111235</span>
+								</div>
+								<div class="sidebar__price">
+									<div class="grey__group">
+										<span class="grey_price">39 грн.</span>
+										<a href="#" class="reviews">15 відгуків</a>
+									</div>
+									<span class="price">22 грн.</span>
+								</div>
+								<a class="badge badge-pill sidebar__tocart" href="#"><span>У кошик</span></a>
+							</div>
+
+							<div class="sidebar__product">
+								<div class="badge badge-pill sidebar__label sidebar__label--recommend">Топ продаж</div>
+								<a href="#" class="sidebar__imgblock">
+									<img class="sidebar__img" src="https://images.ua.prom.st/1220510243_w200_h200_fiderna-kotushka-energofish.jpg" alt="">
+								</a>
+								<a href="#" class="sidebar__title">
+									<span href="#">Фідерна прикормка Fanatic Method</span>
+								</a>
+								<div class="sidebar__description">
+									Код: <span>111235</span>
+								</div>
+								<div class="sidebar__price">
+									<div class="grey__group">
+										<span class="grey_price">39 грн.</span>
+										<a href="#" class="reviews">15 відгуків</a>
+									</div>
+									<span class="price">22 грн.</span>
+								</div>
+								<a class="badge badge-pill sidebar__tocart" href="#"><span>У кошик</span></a>
+							</div>
+
+							<div class="sidebar__product">
+								<div class="badge badge-pill sidebar__label sidebar__label--recommend">Топ продаж</div>
+								<a href="#" class="sidebar__imgblock">
+									<img class="sidebar__img" src="https://images.ua.prom.st/1220510243_w200_h200_fiderna-kotushka-energofish.jpg" alt="">
+								</a>
+								<a href="#" class="sidebar__title">
+									<span href="#">Фідерна прикормка Fanatic Method</span>
+								</a>
+								<div class="sidebar__description">
+									Код: <span>111235</span>
+								</div>
+								<div class="sidebar__price">
+									<div class="grey__group">
+										<span class="grey_price">39 грн.</span>
+										<a href="#" class="reviews">15 відгуків</a>
+									</div>
+									<span class="price">22 грн.</span>
+								</div>
+								<a class="badge badge-pill sidebar__tocart" href="#"><span>У кошик</span></a>
+							</div>
+
+						</div>
+					</div>
+				<!-- </div> -->
+
+
+				<!-- <div class="recommend"> -->
+					<!-- <h2 class="recommend__title">Новинки</h2> -->
+					<!-- <div class="recommend__group">
+						<div class="recommend__item">
+							
+						</div>
+					</div> -->
+					
+					
+				</div> <!-- ./recommend -->
+
+			</div> <!-- ./main -->
+		</div> <!-- ./content -->
+	</div> <!-- ./container -->
+</section>
+
+
+<section class="section">
+	<div class="section__footer__bg">
+
+		<a href="#"><i class="fas fa-backward"></i> На сайт borntofish.org...</a>
+	</div>
+</section>
+
+
+<div class="sitemap">
+	<div class="container">
+		<div class="row p-3">
+			<div class="col-sm-3 col-lg-3 col d-none d-lg-block">
+				<span class="sitemap__block-name">Меню</span>
+				<ul class="col-sm-4">
+					<li><a href="#">На сайт</a></li>
+					<li><a href="#">Магазин</a></li>
+					<li><a href="#">Бренди</a></li>
+					<li><a href="#">Доставка і оплата</a></li>
+					<li><a href="#">Гарантія</a></li>
+					<li><a href="#">Контакти</a></li>
+					<li><a href="#">Профіль</a></li>
+				</ul>
+			</div>
+			<div class="col-sm-7 col-12 col-lg-3 col pl-0">
+				<span class="sitemap__block-name">МИ В СОЦМЕРЕЖАХ</span>
+				<p>Напиши нам в одній із соц-мереж</p>
+				<div class="sitemap__social mb-3">
+					<div class="sitemap__media">
+						<a href="https://www.facebook.com/groups/337815630725074" target="_blank"><i class="fab fa-facebook-f"></i></a>
+					</div>
+					<div class="sitemap__media">
+						<a href="https://invite.viber.com/?g2=AQB2s9jEjxfv2Evwi4YOf3uzSFrM%2B5aaUQ5MKUfRhRx6Ys1pWzETavPD%2B9mbIcIW" target="_blank"><i class="fab fa-viber"></i></a>
+					</div>
+					<div class="sitemap__media">
+						<a href="https://www.borntofish.org/skype:ivan.hrytskiv" target="_blank"><i class="fab fa-skype"></i></a>
+					</div>
+					<div class="sitemap__media">
+						<a href="https://www.youtube.com/channel/UC0F2Hoof1ALrjdkDTn76TWA" target="_blank"><i class="fab fa-youtube"></i></a>
+					</div>
+					<div class="sitemap__media">
+						<a href="http://t.me/Borntofish_bot" target="_blank"><i class="fab fa-telegram-plane"></i></a>
+					</div>
+				</div>
+				<p>Наш сайт використовує систему оплати <a target="_blank" href="https://www.liqpay.ua/">LiqPay</a>. <a target="_blank" href="https://www.borntofish.org/terms-and-conditions">Договір публічної оферти</a></p>
+				<div class="sitemap__cards mt-2">
+					<img src="../../../assets/images/cards.png" alt="">
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<footer class="footer">
+	<div class="container">
+		<p>
+			<span class="footer__name">©2021.  Borntofish. All rights reserved.</span>
+			<a target="_blank" href="https://www.borntofish.org/policy">Полiтика конфiденцiйностi</a>
+			<a target="_blank" href="https://www.borntofish.org/terms-and-conditions">Публічна оферта</a>
+		</p>
+	</div>
+</footer>
+
+<script src="https://kit.fontawesome.com/b53d493ccf.js" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="../../../fishapp/static/js/select.js"></script>
+<script src="../../../fishapp/static/js/breadcrumb.js" type="text/javascript"></script>
+<script src="../../../assets/js/app.js"></script>
+<script src="../../../fishapp/static/js/mach.js"></script>
+<script src="../../../fishapp/static/js/headercrumb.js"></script>
+
+<!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+
+</body>
+</html>
