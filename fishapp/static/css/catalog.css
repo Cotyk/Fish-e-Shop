@@ -158,8 +158,8 @@ ul {
 	/*height: 54vh;*/
 	height: 410px;
 
-	background: url(../../../assets/images/about1bg.png);
-	background-position: center;
+	background: url(../../../media/assets/about1bg.png) center no-repeat;
+	/*background-position: center;*/
 	background-size: cover;
 	-webkit-background-size: cover;
 }
@@ -288,7 +288,7 @@ ul {
 
 	transition: .1s linear;
 
-	font-size: 15px;
+	font-size: 14px;
 	transform: scale(0.8, 1.4);
 	letter-spacing: 0;
 
@@ -456,7 +456,7 @@ ul {
 	font-weight: bold;
 	display: block;
 	font-family: 'Oswald', sans-serif;
-	font-size: 22px;
+	font-size: 24px;
 	text-transform: uppercase;
 	margin-bottom: 20px;
 	
@@ -467,13 +467,13 @@ ul {
 	padding-left: 0 !important;
     list-style-type: none;
     font-family: 'Roboto';
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.667;
 }
 
 .sitemap p {
     font-family: 'Roboto';
-    font-size: 14px;
+    font-size: 16px;
     color: #5e7480;
     margin-bottom: 20px;
 }
@@ -517,7 +517,7 @@ ul {
 
 .footer p {
 	font-family: "Roboto";
-    font-size: 14px;
+    font-size: 17px;
     color: #537480;
     margin: 0;
 
@@ -583,7 +583,7 @@ ul {
 
 
 .sidebar__header{
-	font-size: 15px;
+	font-size: 16px;
 	font-family: 'Montserrat', sans-serif;
 	font-weight: bold;
 	color: #024082;
@@ -863,7 +863,7 @@ ul {
 
 .snav__link{
 	margin: 6px 6px 6px 23px;
-	font-size: 12px;
+	font-size: 13px;
 	color: #000 !important;
 }
 
@@ -942,7 +942,7 @@ ul {
 	width: 80%;
 
 	text-align: center;
-	font-size: 13px;
+	font-size: 16px;
 	font-family: 'Verdana';
 	color: #3d3d3d;
 	font-weight: bold;
@@ -1163,8 +1163,8 @@ ul {
 	position: relative;
 	height: 450px;
 	text-align: center;
-	align-content: middle;
-	background: url(../../../assets/images/resortsbg.png)
+	align-content: center;
+	background: url(../../../media/assets/resortsbg.png)
 	 no-repeat center;
 	background-size: cover;
 }
