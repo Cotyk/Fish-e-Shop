@@ -8,6 +8,11 @@ idea
 dist
 db.sqlite3
 
+./fishapp/migrations/*
+./fishop/settings.py
+remember/*
+
+
 A_for_delete
 
 __pycache__/
