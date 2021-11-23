@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-$p8fq8!l+3to=w32@b5i&l72*%usduj3neg)66kcr9-o22z!xc'
+SECRET_KEY = os.environ.get("SECRET_KEY_FISHOP")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -84,7 +84,7 @@ DATABASES = {
         'USER': 'fish_user',
         'HOST': 'localhost',
         'POST': '5432',
-        'PASSWORD': '131101',
+        'PASSWORD': os.environ.get("DB_PASS_FISHOP"),
     }
 }
 
