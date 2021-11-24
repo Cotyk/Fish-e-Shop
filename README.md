@@ -19,7 +19,7 @@ Authors
 
 Valentyn Vovchak
 
-![view](https://github.com/valentynvovchak/Fish-e-Shop/blob/main/1.jpg?raw=true)
+![view](https://github.com/valentynvovchak/Fish-e-Shop/main/1.jpg?raw=true)
 
 ![view](https://github.com/valentynvovchak/Fish-e-Shop/blob/main/2.jpg?raw=true)
 
