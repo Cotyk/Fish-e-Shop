@@ -1,0 +1,66 @@
+{% load static %}
+<header id="header" class="header">
+	<div class="container">
+		<div class="header__inner">
+			<a href="#" class="header__logo" data-scroll="#intro"><img src="{{ PORTAL_URL }}/media/assets/LogoUK_cropped.png" alt=""></a>
+
+            <div class="header__login" style="flex-grow: 0.65;">
+                <a href="{% if user.is_authenticated %}{% url 'logout' %}{% else %}{% url 'login' %}{% endif %}"
+                   style="color: white; font-size: 17px; font-weight:bold;">
+                    {% if user.is_authenticated %}{{ user.username }} <i class="fas fa-sign-out-alt"></i>{% else %}Login <i class="fas fa-sign-in-alt"></i>{% endif %}
+                </a>
+            </div>
+
+			<nav id="header-nav1" class="header-nav1">
+				<a class="nav__link" href="https://www.borntofish.org/" data-click=''>На сайт</a>
+				<a id="header_selected" class="nav__link active" href="{% url 'homepage' %}" data-click=''>Магазин</a>
+				<!-- <a class="nav__link" href="#">Бренди</a> -->
+				<a class="nav__link" href="https://www.borntofish.org/terms-and-conditions" data-click=''>Публічна оферта</a>
+				<a class="nav__link" href="https://www.borntofish.org/policy" data-click=''>Гарантія</a>
+				<a class="nav__link" href="https://www.borntofish.org/contacts" data-click=''>Контакти</a>
+			</nav>
+
+			<form id="header_mobile_search_form" method="GET" action="{% url 'search' %}" class="header_mobile_search_form">
+                <input style="display: block; opacity: 0; font-size: 0;" type="text" name="page" value="1">
+				<input style="margin-top: 1px;" type="search" id="mobile_search_input" name="search_input" placeholder="Що шукаєш?">
+				<button id="mobile_search_button" type="submit" class="btn btn-light"><i class="fas fa-search"></i></button>
+			</form>
+
+{#			<div id="header_breadcrumb" class="header_breadcrumb hidden">#}
+{#				<div class="font-up-bold text-uppercase">#}
+{#                    <nav aria-label="breadcrumb MY">#}
+{#                      <ol id="breadcrumbMY" class="breadcrumb bg-transparent justify-content-center br_items text-white MY breadcrumb--favorite">#}
+{#                          <li class="breadcrumb-item"><a class="text-white" href="{% url 'homepage' %}">Головна</a></li>#}
+{#                      </ol>#}
+{#                    </nav>#}
+{#                </div>#}
+{#			</div>#}
+
+			<nav class="header-nav2">
+				<!-- <a class="nav__link" href="#">Профіль</a> -->
+
+				<a class="nav__link" href="{% url 'cart' %}">
+					<div class="bdg">
+						<img src="{{ PORTAL_URL }}/media/assets/header/Cart.png" alt="">
+                        <span class="badge badge-pill badge-light cartbadge">{{ cart.products.count }}</span>
+					</div>
+				</a>
+				<a id="header_search_a" class="nav__link" href="#"><img src="{{ PORTAL_URL }}/media/assets/header/Search.png" alt=""></a>
+			</nav>
+
+            <nav id="header-nav3" class="header-nav3" style="display: none;">
+                    {% for category in categories|slice:":22" %}
+                        {% if category.product__count > 0 %}
+                            <a class="nav__link {% if slug == category.slug %}active{% endif %}" href="{{ category.get_absolute_url }}" data-click=''>{{ category.name}}
+                                <span class="nav__link__calc">({{category.product__count}})</span>
+                            </a>
+                        {% endif %}
+                    {% endfor %}
+			</nav>
+
+			<button class="nav-toggle" id="nav-toggle" type="button">
+				<span class="nav-toggle__item">Menu</span>
+			</button>
+		</div>
+	</div>
+</header>

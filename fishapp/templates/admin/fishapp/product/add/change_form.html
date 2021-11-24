@@ -1,0 +1,53 @@
+{% extends 'admin/change_form.html' %}
+{% load static %}
+
+{#{% block after_field_sets %}#}
+{#    {{ block.super }}#}
+{#{% endblock %}#}
+
+{% block admin_change_form_document_ready %}
+{{ block.super }}
+
+<div style="display: none;" id="info-hidden" data-url="{{ PORTAL_URL }}">{{ PORTAL_URL }}</div>
+
+<script>
+    let a = false;
+
+    (function($) {
+        $('#id_category').on('change', function () {
+                let id = $('#id_category').val();
+                {#$('#id_category').attr('data-id', id);#}
+            if(a){
+
+                let url=String($('#info-hidden').data('url')) + "/update/"
+                {#alert(url)#}
+
+                $.ajax({
+                    'url': url,
+                    'type': 'POST',
+                    'async': true,
+                    'dataType': 'json',
+                    'data': {
+                        {#'id': box.data('id'),#}
+                        'id': id,
+                        'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').val()
+                    },
+                    'error': function(xhr, status, error){
+                        alert(error);
+                    },
+                    'success': function(data, status, xhr){
+                        if (data["status"] === "OK"){
+                            {#alert("OK");#}
+                        }
+                    }
+                });
+
+                $('input[name="_continue"]').click();
+            } else {
+                a = true;
+            }
+        })
+
+    })(django.jQuery);
+</script>
+{% endblock %}

@@ -69,7 +69,7 @@
     position: absolute;
     right: 9px;
     top: 9px;
-    background: url('../../../assets/images/arr.png') no-repeat right center / cover;
+    background: url('../../../media/assets/arr.png') no-repeat right center / cover;
     opacity: 0.6;
 
     -webkit-transition: all .27s ease-in-out;

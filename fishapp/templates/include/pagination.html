@@ -1,0 +1,63 @@
+{% if is_paginated %}
+    {% with order_by=request.GET.order_by on_page=request.GET.on_page filter=request.GET.filter max=request.GET.max min=request.GET.min search_input=request.GET.search_input %}
+        <div class="pagination">
+
+            <a href="?page={% if page_obj.number > 1 %}{{ page_obj.number|add:-1 }}{% else %}1{% endif %}{% if on_page %}&amp;on_page={{ on_page }}{% endif %}{% if filter %}&amp;filter={{ filter }}{% endif %}{% if order_by %}&amp;order_by={{ order_by }}{% endif %}{% if max %}&amp;max={{ max }}{% endif %}{% if min %}&amp;min={{ min }}{% endif %}{% if search_input %}&amp;search_input={{ search_input }}{% endif %}"
+               class="pagination__item left">
+                <div class="pagination__content">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+            </a>
+
+            <a href="?page=1{% if on_page %}&amp;on_page={{ on_page }}{% endif %}{% if filter %}&amp;filter={{ filter }}{% endif %}{% if order_by %}&amp;order_by={{ order_by }}{% endif %}{% if max %}&amp;max={{ max }}{% endif %}{% if min %}&amp;min={{ min }}{% endif %}{% if search_input %}&amp;search_input={{ search_input }}{% endif %}"
+               class="pagination__item {% if page_obj.number == 1 %}active{% endif %}">
+                <div class="pagination__content">
+                    01
+                </div>
+            </a>
+
+            {% if page_obj.number != 1 and page_obj.number != 2 and page_obj.number != 3 %}
+                <a href="#" class="pagination__item" style="pointer-events: none;">
+                    <div class="pagination__content">
+                        ...
+                    </div>
+                </a>
+            {% endif %}
+
+            {% for p in paginator.page_range %}
+                {% if p == page_obj.number or p == page_obj.number|add:-1 or p == page_obj.number|add:1 %}
+                    {% if p != 1 and p != paginator.num_pages %}
+                        <a href="?page={{ p }}{% if on_page %}&amp;on_page={{ on_page }}{% endif %}{% if filter %}&amp;filter={{ filter }}{% endif %}{% if order_by %}&amp;order_by={{ order_by }}{% endif %}{% if max %}&amp;max={{ max }}{% endif %}{% if min %}&amp;min={{ min }}{% endif %}{% if search_input %}&amp;search_input={{ search_input }}{% endif %}"
+                           class="pagination__item {% if page_obj.number == p %}active{% endif %}">
+                            <div class="pagination__content">
+                                0{{ p }}
+                            </div>
+                        </a>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+
+            {% if page_obj.number != paginator.num_pages and page_obj.number != paginator.num_pages|add:-1 and page_obj.number != paginator.num_pages|add:-2 %}
+                <a href="#" class="pagination__item" style="pointer-events: none;">
+                    <div class="pagination__content">
+                        ...
+                    </div>
+                </a>
+            {% endif %}
+
+            <a href="?page={{ paginator.num_pages }}{% if on_page %}&amp;on_page={{ on_page }}{% endif %}{% if filter %}&amp;filter={{ filter }}{% endif %}{% if order_by %}&amp;order_by={{ order_by }}{% endif %}{% if max %}&amp;max={{ max }}{% endif %}{% if min %}&amp;min={{ min }}{% endif %}{% if search_input %}&amp;search_input={{ search_input }}{% endif %}"
+               class="pagination__item {% if page_obj.number == paginator.num_pages %}active{% endif %}">
+                <div class="pagination__content">
+                    0{{ paginator.num_pages }}
+                </div>
+            </a>
+
+            <a href="?page={% if page_obj.number < paginator.num_pages %}{{ page_obj.number|add:1 }}{% else %}{{ paginator.num_pages }}{% endif %}{% if order_by %}&amp;order_by={{ order_by }}{% endif %}{% if on_page %}&amp;on_page={{ on_page }}{% endif %}{% if max %}&amp;max={{ max }}{% endif %}{% if min %}&amp;min={{ min }}{% endif %}{% if search_input %}&amp;search_input={{ search_input }}{% endif %}" class="pagination__item right">
+                <div class="pagination__content">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </a>
+
+        </div>
+    {% endwith %}
+{% endif %}

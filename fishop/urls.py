@@ -17,10 +17,16 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+# from fishapp.admin import UpdateJsonFieldView
+from fishapp.admin import update_json_field_view
+from fishapp.views import test_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('fishapp.urls')),
+    path('update/', update_json_field_view, name='update_json'),
+    path('test/', test_view, name='test'),
+    # path('product-status-seen/', product_seen_view, name='product_seen'),
 ]
 
 if settings.DEBUG:

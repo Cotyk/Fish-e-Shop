@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -21,12 +22,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-$p8fq8!l+3to=w32@b5i&l72*%usduj3neg)66kcr9-o22z!xc'
+# SECRET_KEY = ...
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', 'localhost', 'ab29-194-44-46-93.ngrok.io']
 
 
 # Application definition
@@ -38,9 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 
     # custom
     'fishapp.apps.FishappConfig',
+    'django_template_maths',
+    'crispy_forms',
+
+    'django_cleanup',
 ]
 
 MIDDLEWARE = [
@@ -66,6 +72,11 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                # custom
+                'fishop.context_processors.portal_processor',
+                'fishop.context_processors.get_categories'
+
             ],
         },
     },
@@ -77,17 +88,7 @@ WSGI_APPLICATION = 'fishop.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'fish_db',
-        'USER': 'fish_user',
-        'HOST': 'localhost',
-        'POST': '5432',
-        'PASSWORD': '131101',
-    }
-}
-
+# DATABASES = ...
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -113,7 +114,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'uk'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Kiev'
 
 USE_I18N = True
 
@@ -128,7 +129,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, '/fishapp/static')
 STATICFILES_DIRS = [
-    BASE_DIR / '/static',
+    BASE_DIR / '/static/',
 ]
 
 MEDIA_URL = '/media/'
@@ -138,3 +139,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+SITE_ID = 1
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+# ABSOLUTEURI_PROTOCOL = 'http'  # !
+# PORTAL_URL = absoluteuri.build_absolute_uri('/')[:-1]
+
+# EMAIL ...

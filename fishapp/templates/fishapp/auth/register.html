@@ -1,0 +1,31 @@
+{% extends 'fishapp/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block additional_css %}
+    <style>
+        .sidebar__item {
+            border-bottom: 1px solid #d5d5d6;
+        }
+        .section__footer__bg{
+            margin-top: -20px;
+        }
+    </style>
+{% endblock additional_css %}
+
+{% block additional_js %}{% endblock additional_js %}
+{% block app_js %}{% endblock app_js %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h3 class="text-center">Реєстрація</h3>
+        <hr>
+        <form action="{% url 'register' %}" method="POST">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <input type="submit" class="btn btn-success" value="Зареєструватися">
+        </form>
+    </div>
+</div>
+{% endblock content %}

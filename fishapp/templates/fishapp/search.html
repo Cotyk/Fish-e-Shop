@@ -1,0 +1,205 @@
+{% extends 'fishapp/base.html' %}
+{% load static %}
+{% load django_template_maths %}
+
+{% block additional_css %}
+    <link rel="stylesheet" href="{% static 'css/select.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="{% static 'css/price_range_working.css' %}">
+{% endblock additional_css %}
+
+{% block meta_title %}Born to Fish - Магазин{% endblock meta_title %}
+
+{% block main--for_product %}{% endblock main--for_product %}
+
+{% block another_recommend %}{% endblock another_recommend %}
+
+{% block intro_categories %}style="margin-bottom:35px;"{% endblock intro_categories %}
+
+{% block load_more %}
+    {% if is_paginated %}
+        {% with page=request.GET.page %}
+            <a class="load_more" href="javascript:void(0);" {% if paginator.num_pages == page|add:0 %}style="display: none;" {% endif %} data-page="{{ page|add:1 }}" id="lazyLoadLink">
+                <i class="fas fa-sync-alt"></i>
+                <span class="load_margin">Показати Ще</span>
+            </a>
+        {% endwith %}
+    {% endif %}
+{% endblock load_more %}
+
+{% block additional_js %}
+    <script src="{% static 'js/select.js'%}"></script>
+    <script src="{% static 'js/mobile_filter.js'%}"></script>
+    <script src="{% static 'js/price_range_working.js'%}"></script>
+    <script src="{% static 'js/modal.js'%}"></script>
+    <script src="{% static 'js/filter.js'%}"></script>
+    <script src="{% static 'js/lazy_load.js'%}"></script>
+{% endblock additional_js%}
+
+
+{% block sidebar_additional_content %}
+    <div class="sidebar__item sidebar__item--for_product">
+        <div class="sidebar__header">
+            <span>Полігон цін</span>
+            <a href="#"><span class="menu__criss-cross" id="cancel_filter_criss_cross">&#10008;</span></a>
+        </div>
+
+        <div id="show_if_mobile_div_screen">
+            <div class="price-slider"><span>Від
+                <input id="input1_number" class="custom_input" type="number" value="0" min="0" max="12000"/> грн <br>До
+                <input id="input2_number" class="custom_input" type="number" value="12000" min="0" max="12000"/> грн</span>
+              <input id="input1_range" class="custom_input" value="0" min="0" max="12000" step="10" type="range"/>
+              <input id="input2_range" class="custom_input" value="12000" min="0" max="12000" step="10" type="range"/>
+              <svg width="100%" height="24">
+                <line x1="4" y1="0" x2="300" y2="0" stroke="#212121" stroke-width="12" stroke-dasharray="1 28"></line>
+              </svg>
+            </div>
+        </div>
+
+    </div>
+{% endblock sidebar_additional_content %}
+
+{% block mobile_filter %}
+    <!-- MOBILE FILTER -->
+    <div id="mobile_filter" class="mobile_filter">
+        {% with large=request.GET.large %}
+            <a href="#" class="mobile_filter__item first filter__item--js">
+                {% if large != '1' %}
+                    <i class="fas fa-th-list"></i>
+                {% else %}
+                    <i class="fas fa-th-large"></i>
+                {% endif %}
+            </a>
+        {% endwith %}
+
+        <!-- <span>Сортування</span> -->
+        <select class="mobile_filter__item mobile_sorting new-mobile-select" name="select_mobile_sorting" id="select_mobile_sorting">
+            <option style="display: none;" value="">Сортування</option>
+            <option value="За зростанням ціни">За зростанням ціни</option>
+            <option value="За спаданням ціни">За спаданням ціни</option>
+            <option value="За назвою">За назвою</option>
+            <option value="За новизною">За новизною</option>
+        </select>
+
+        <select class="mobile_filter__item mobile_filtering new-mobile-select" name="select_mobile_filtering" id="select_mobile_filtering">
+            <option style="display: none;" value="">Товарів</option>
+            <option value="24">24</option>
+            <option value="32">32</option>
+            <option value="48">48</option>
+            <option value="56">56</option>
+            <option value="{% if current_subcategory %}{{ current_subcategory.product__count }}{% else %}{{ current_category.product__count }}{% endif %}">Усі товари</option>
+        </select>
+
+        <!-- Trigger/Open The Modal -->
+        <a id="myBtn" type="button" class="mobile_filter__item pricerange">
+            <span>Діапазон</span>
+        </a>
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+          <!-- Modal content -->
+          <div class="modal-content">
+{#            <span class="close">&times;</span>#}
+
+              <div class="sidebar__item sidebar__item--for_product sidebar_modal">
+                <div class="sidebar__header">
+                    <span>Полігон цін</span>
+                    <a type="button"><span class="menu__criss-cross close">&#10008;</span></a>
+                </div>
+
+                <div id="show_if_mobile_div">
+                    <div class="price-slider">
+                        <span>Від
+                        <input id="input1_number" class="custom_input" type="number" value="0" min="0" max="12000"/> грн <br>До
+                        <input id="input2_number" class="custom_input" type="number" value="12000" min="0" max="12000"/> грн</span>
+                      <input id="input1_range" class="custom_input" value="0" min="0" max="12000" step="10" type="range"/>
+                      <input id="input2_range" class="custom_input" value="12000" min="0" max="12000" step="10" type="range"/>
+                      <svg width="100%" height="24">
+                        <line x1="4" y1="0" x2="300" y2="0" stroke="#212121" stroke-width="12" stroke-dasharray="1 28"></line>
+                      </svg>
+                    </div>
+                </div>
+
+              </div>
+
+          </div>
+        </div>
+
+    </div>
+{% endblock mobile_filter %}
+
+{% block normal_filter %}
+    <div class="filter"> <!-- NORMAL FILTER -->
+			<div class="filter__item filter__item--1">
+				<span>Фільтр</span>
+			</div>
+
+            {% with large=request.GET.large %}
+                <a href="#" class="filter__item filter__item--2 filter__item--js">
+                    {% if large != '1' %}
+                        <i class="fas fa-th-list"></i>
+                    {% else %}
+                        <i class="fas fa-th-large"></i>
+                    {% endif %}
+                </a>
+            {% endwith %}
+
+			<select class="filter__item filter__item--3 select" name="language">
+			    <option disabled>Сортування</option>
+			    <option value="За зростанням ціни">За зростанням ціни</option>
+			    <option value="За спаданням ціни">За спаданням ціни</option>
+			    <option value="За назвою">За назвою</option>
+			    <option value="За новизною">За новизною</option>
+			</select>
+
+			<select class="filter__item filter__item--4 select" id="select_filtering" name="language">
+			    <option disabled>Товарів на сторінці</option>
+			    <option value="24">24</option>
+			    <option value="32">32</option>
+			    <option value="48">48</option>
+			    <option value="56">56</option>
+			</select>
+
+            {% with order_by=request.GET.order_by %}
+			<a href="?page=1&amp;on_page={% if current_subcategory %}{{ current_subcategory.product__count }}{% else %}{{ current_category.product__count }}{% endif %}{% if filter %}&amp;filter={{ filter }}{% endif %}{% if order_by %}&amp;order_by={{ order_by }}{% endif %}" class="filter__item filter__item--5">
+				<span>Усі товари</span>
+			</a>
+            {% endwith %}
+
+		</div>
+{% endblock normal_filter %}
+
+
+{% block content %}
+
+    <div class="recommend">
+
+        <div class="sidebar__item sidebar__item--for_product sidebar__item--for_recommend">
+
+            <h2 class="recommend__title f">
+                {% if current_subcategory %}{{ current_subcategory.sub_name }} <em class="quantity-em">({{ current_subcategory.product__count }} шт.)</em>
+                {% else %}{{ current_category.name}} <em class="quantity-em">({{ current_category.product__count }} шт.)</em>{% endif %}
+            </h2>
+
+            <script type="text/javascript">
+              // A CSRF token is required when making post requests in Django
+              // To be used for making AJAX requests in script.js
+              window.CSRF_TOKEN = "{{ csrf_token }}";
+            </script>
+
+            <div class="sidebar__products sidebar__products--for_recommend product__list__js" id="posts">
+
+                {% include 'include/posts.html' %}
+
+            </div>
+
+        </div> <!-- ./sidebar__products (catalog) -->
+
+    </div> <!-- ./recommend -->
+{% endblock content %}
+
+
+{% block pagination %}
+    {% include 'include/pagination.html' %}
+{% endblock pagination %}
