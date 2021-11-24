@@ -1,0 +1,53 @@
+<div class="font-up-bold text-uppercase">
+    <nav aria-label="breadcrumb MY">
+      <ol id="breadcrumbMY" class="breadcrumb bg-transparent justify-content-center br_items text-white MY">
+
+          <li class="breadcrumb-item"><a class="text-white" href="{% url 'homepage' %}">Головна</a></li>
+
+        {% if slug and not crt and not checkout %}
+            <li class="breadcrumb-item"><a class="text-white" href="{% url 'category' slug=slug %}">{{ current_category.name }}</a></li>
+        {% endif %}
+
+        {% if product.sub_category %}
+          <li class="breadcrumb-item">
+              <a class="text-white" href="{% url 'catalog' slug=slug sub_slug=product.sub_category.sub_slug %}?page=1">
+                  {{ product.sub_category.sub_name }}
+              </a>
+          </li>
+        {% elif current_subcategory %}
+          <li class="breadcrumb-item">
+              <a class="text-white" href="{% url 'catalog' slug=slug sub_slug=current_subcategory.sub_slug %}?page=1">
+                  {{ current_subcategory.sub_name }}
+              </a>
+          </li>
+        {% endif %}
+
+        {% if product %}
+            <li class="breadcrumb-item">
+              <a class="text-white" href="#">
+                  {{ product.title|slice:":15" }}...
+              </a>
+            </li>
+        {% endif %}
+
+        {% if crt %}
+            <li class="breadcrumb-item">
+              <a class="text-white" href="#">Кошик</a>
+            </li>
+        {% endif %}
+
+        {% if checkout %}
+         <li class="breadcrumb-item">
+             <a class="text-white" href="#">Замовлення</a>
+         </li>
+        {% endif %}
+
+        {% if srch_count %}
+         <li class="breadcrumb-item">
+             <a class="text-white" href="#">Пошук</a>
+         </li>
+        {% endif %}
+
+      </ol>
+    </nav>
+</div>

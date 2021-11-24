@@ -1,0 +1,222 @@
+{% extends 'fishapp/base.html' %}
+{% load static %}
+
+{% block additional_css %}
+    <link rel="stylesheet" href="{% static 'css/select_order.css' %}">
+{% endblock additional_css %}
+
+{% block meta_title %}Borntofish - Магазин{% endblock meta_title %}
+
+{% block sidebar_additional_content %}{% endblock sidebar_additional_content %}
+
+{% block main--for_product %}main--for_product{% endblock main--for_product %}
+
+
+{% block another_recommend %}{% endblock another_recommend %}
+
+{% block load_more %}{% endblock load_more %}
+
+{% block pagination %}{% endblock pagination %}
+
+{% block additional_js %}
+    <script src="{% static 'js/select.js' %}"></script>
+{#    <script src="{% static 'js/headercrumb.js'%}"></script>#}
+    <script src="{% static 'js/check_section.js'%}"></script>
+{% endblock additional_js%}
+
+{% block alert %}danger{% endblock alert %}
+
+{% block content %}
+<h3>Оформлення замовлення</h3>
+
+<div class="order">
+    <div class="order_formblock">
+        <form class="order_form" action="{% url 'make_order' %}" method="POST" enctype="multipart/form-data" role="form">
+            {% csrf_token %}
+
+            <div style="position: relative;" class="form-group {% if errors.buying_type %}has-error{% endif %}">
+                <label for="transp_select">Спосіб доставки: <span style="color: red;">*</span></label>
+                <select data-value="{{ data.buying_type }}" class="custom-select {% if errors.buying_type %}is-invalid{% endif %}" name="buying_type" id="transp_select">
+                    <option {% if data.buying_type == '' %}selected="selected"{% endif %} value="">Спосіб доставки</option>
+                    <option {% if data.buying_type == 'self' %}selected="selected"{% endif %} value="self">Самовивіз</option>
+                    <option {% if data.buying_type == 'delivery' %}selected="selected"{% endif %} value="delivery">У відділення</option>
+                </select>
+                <div style="position: absolute; top: 95%;" class="invalid-feedback">{{ errors.buying_type }}</div>
+            </div>
+
+            <hr>
+
+            <div style="position: relative;" class="form-group {% if errors.region %}has-error{% endif %}">
+              <label for="order_region">Область: <span style="color: #e20707;">*</span></label>
+              <div class="order_region">
+                <input type="text" value="{{ data.region }}"
+                       name="region" id="order_region"
+                       class="form-control {% if errors.region %}is-invalid{% endif %}"
+                       placeholder="(напр. Львівська)">
+                <div style="position: absolute; top: 95%;" class="invalid-feedback">{{ errors.region }}</div>
+              </div>
+            </div>
+
+
+            <div style="position: relative;" class="form-group {% if errors.location %}has-error{% endif %}">
+              <label for="order_sity">Місто/Населений пункт: <span style="color: #e20707;">*</span></label>
+              <div class="order_sity">
+                <input type="text" value="{{ data.location }}"
+                       name="location" id="order_sity"
+                       class="form-control {% if errors.location %}is-invalid{% endif %}"
+                       placeholder="Населений пункт для доставки">
+                <div style="position: absolute; top: 95%;" class="invalid-feedback">{{ errors.location }}</div>
+              </div>
+            </div>
+
+            <div style="position: relative;" class="form-group {% if errors.section %}has-error{% endif %}" id="order_sect">
+              <label for="order_section">Відділення: <span style="color: #e20707;">*</span></label>
+              <div class="order_sect">
+                <input type="text" value="{{ data.section }}"
+                       name="section" id="order_section"
+                       class="form-control {% if errors.section %}is-invalid{% endif %}"
+                       placeholder="Назва відділення Нової Пошти">
+                <div style="position: absolute; top: 95%;" class="invalid-feedback">{{ errors.section }}</div>
+              </div>
+            </div>
+
+            <div class="order_street" style="display: none;">
+                <label for="order_street">Вулиця: <span style="color: red;">*</span></label>
+                <input id="order_street" type="text">
+            </div>
+
+            <div class="order_housenumber" style="display: none;">
+                <label for="order_housenumber">Номер будинку: <span style="color: red;">*</span></label>
+                <input id="order_housenumber" type="text">
+            </div>
+
+            <div class="order_flat" style="display: none;">
+                <label for="order_flat">Номер квартири/офісу:</label>
+                <input id="order_flat" type="text">
+            </div>
+
+            <hr>
+
+            <div style="position: relative;" class="form-group {% if errors.paying_type %}has-error{% endif %}">
+                <label for="pay_select">Спосіб оплати: <span style="color: red;">*</span></label>
+                <select class="custom-select {% if errors.paying_type %}is-invalid{% endif %}" name="paying_type" id="pay_select">
+                    <option {% if data.paying_type == '' %}selected="selected"{% endif %} value="">Спосіб оплати</option>
+                    <option {% if data.paying_type == 'after' %}selected="selected"{% endif %} value="after">Післяоплата</option>
+                    <option {% if data.paying_type == 'transaction' %}selected="selected"{% endif %} value="transaction">Переказ</option>
+                </select>
+                <div style="position: absolute; top: 95%;" class="invalid-feedback">{{ errors.paying_type }}</div>
+            </div>
+
+            <hr>
+
+            <label class="order_info_label" for="order_first_name">Інформація про одержувача:</label>
+            <div style="position: relative;" class="form-group {% if errors.first_name %}has-error{% endif %}">
+              <label for="order_first_name">Ім'я: <span style="color: #e20707;">*</span></label>
+              <div class="order_first_name">
+                <input type="text" value="{{ data.first_name }}"
+                       name="first_name" id="order_first_name"
+                       class="form-control {% if errors.first_name %}is-invalid{% endif %}"
+                       placeholder="Імʼя, на яке оф. доставку">
+                <div style="position: absolute; top: 95%;" class="invalid-feedback">{{ errors.first_name }}</div>
+              </div>
+            </div>
+
+            <div style="position: relative;" class="form-group {% if errors.last_name %}has-error{% endif %}">
+              <label for="order_last_name">Прізвище: <span style="color: #e20707;">*</span></label>
+              <div class="order_last_name">
+                <input type="text" value="{{ data.last_name }}"
+                       name="last_name" id="order_last_name"
+                       class="form-control {% if errors.last_name %}is-invalid{% endif %}"
+                       placeholder="Прізвище, на яке оф. доставку">
+                <div style="position: absolute; top: 95%;" class="invalid-feedback">{{ errors.last_name }}</div>
+              </div>
+            </div>
+
+            <div style="position: relative;" class="form-group {% if errors.phone %}has-error{% endif %}">
+              <label for="order_phone">Телефон: <span style="color: #e20707;">*</span></label>
+              <div class="order_phone">
+                <input type="text" value="{{ data.phone }}"
+                       name="phone" id="order_phone"
+                       class="form-control {% if errors.phone %}is-invalid{% endif %}">
+                <div style="position: absolute; top: 95%;" class="invalid-feedback">{{ errors.phone }}</div>
+              </div>
+            </div>
+
+            <div style="position: relative;" class="form-group {% if errors.address %}has-error{% endif %}">
+              <label for="order_address">Адрес: <span style="color: #e20707;">*</span></label>
+              <div class="order_address">
+                <input type="text" value="{{ data.address }}"
+                       name="address" id="order_address"
+                       class="form-control {% if errors.address %}is-invalid{% endif %}">
+                <div style="position: absolute; top: 95%;" class="invalid-feedback">{{ errors.address }}</div>
+              </div>
+            </div>
+
+            <div style="position: relative;" class="form-group {% if errors.comment %}has-error{% endif %}">
+              <label for="order_comment">Коментар:</label>
+              <div class="order_comment">
+                <textarea class="form-control {% if errors.comment %}is-invalid{% endif %}"
+                          style="padding: 5px;"
+                          placeholder="Уточнення до замовлення..."
+                          name="comment"
+                          id="order_comment"
+                          cols="100" rows="6">{{ data.comment }}</textarea>
+                <div style="position: absolute; top: 95%;" class="invalid-feedback">{{ errors.comment }}</div>
+              </div>
+            </div>
+
+            <button id="order_make_btn" class="cart_make_order" type="submit"><span>Підтвердити замовлення</span></button>
+        </form>
+    </div>
+
+
+    <div class="order_list">
+
+        <div class="order_list__item">
+
+            <div class="order_clip"><img src="{{ PORTAL_URL }}/media/assets/clip5.png" alt="clip"></div>
+
+            <h6 class="order_list_title">Ваше замовлення</h6>
+
+            <table class="ord_cart_table">
+
+              <tbody>
+                {% for cart_product in cart.products.all %}
+                <tr class="first_tr">
+                    {% if cart_product.product.related_images.first %}
+                        <th class="ord_cart_img" scope="row"><a href="{{ cart_product.product.get_absolute_url }}"><img src="{{ PORTAL_URL }}{{ cart_product.product.related_images.first }}" alt="product"></a></th>
+                    {% else %}
+                        <th class="ord_cart_img noimg" scope="row"><a href="{{ cart_product.product.get_absolute_url }}"><img src="{{ PORTAL_URL }}/media/assets/no-camera--v1.png" alt="No camera"></a></th>
+                    {% endif %}
+
+
+                  <td class="ord_cart_titlePrice">
+                      <a href="{{ cart_product.product.get_absolute_url }}" class="ord_cart_title">{{ cart_product.product.title }}</a>
+
+                      <div class="ord_cart_price">{{ cart_product.product.price }} <span class="ord_cart_currency">грн</span></div>
+
+                      <div class="ord_cart_quantity">{{ cart_product.qty }} шт.</div>
+
+                      <div class="ord_cart_pricesum">{{ cart_product.final_price }} <span class="ord_cart_currency">грн</span></div>
+
+                    </td>
+                </tr>
+                {% endfor %}
+
+              </tbody>
+            </table>
+
+            <div class="cart_summing for__order">
+                <span class="cart-sum"><p style="display: inline;" class="_360-hidden">К-сть:</p> {{ cart.total_products }}</span>
+                <div class="cart_for_pay for_orderok">До оплати: <span class="cart_sum_for_pay fororder">{{ cart.final_price }}</span> <span class="cart_pay_currency forord">грн</span></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+
+
+
+

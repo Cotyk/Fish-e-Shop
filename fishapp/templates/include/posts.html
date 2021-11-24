@@ -1,0 +1,116 @@
+{% if posts %}
+    {% for prod in posts %}
+        <div class="sidebar__product">
+
+            {% if prod in top_sale_products %}
+                <div {% if prod in seen_products %}style="margin-top: 20px;"{% endif %} class="badge badge-pill sidebar__label sidebar__label--recommend">Топ продаж</div>
+            {% endif %}
+
+            {% if prod in seen_products %}
+                <div class="badge badge-pill sidebar__label sidebar__label--recommend blue">Переглянуто</div>
+            {% endif %}
+
+            <a href="{{ prod.get_absolute_url }}" class="sidebar__imgblock">
+                {% if prod.related_images.first %}
+                    <img class="sidebar__img" src="{{ PORTAL_URL }}{{ prod.related_images.first }}" alt="product-img">
+                {% else %}
+                    <img class="sidebar__img" src="{{ PORTAL_URL }}/media/assets/no-camera--v1.png" alt="product-img" style="opacity: .7;max-height: 90px; margin: 5px auto 5px auto;">
+                {% endif %}
+            </a>
+            <div class="product_info_div">
+                <a href="{{ prod.get_absolute_url }}" class="sidebar__title">
+                    <span>{{ prod.title}}</span>
+                </a>
+
+                <div class="sidebar__description">
+                    Код: <span>{{ prod.code }}</span>
+                </div>
+
+{#                {% if prod.discount %}#}
+{#                    <div class="discounts discounts--big">#}
+{#                        <span class="discounts__value">-{{ prod.discount }}%</span>#}
+{#                        <img class="discounts__image" src="{{ PORTAL_URL }}/media/assets/discount.png" alt="discounts">#}
+{#                    </div>#}
+{#                {% endif %}#}
+
+                <span class="remaining">На складі: {{ prod.remaining }}</span>
+
+                {% with prod as obj %}
+                    {% include 'include/staff.html' %}
+                {% endwith %}
+                <div class="sidebar__price">
+                    <div class="grey__group">
+{#                        {% if prod.discount %}#}
+{#                            <span class="grey_price">{{ prod.calc_no_discount_price }} грн.</span>#}
+{#                        {% endif %}#}
+                    </div>
+                    <span class="price">{{ prod.price }} грн.</span>
+                </div>
+
+                {% if user.is_authenticated %}
+                    <a class="badge badge-pill sidebar__tocart sidebar__tocart--big" href="{% if user.is_authenticated %}{{ prod.get_absolute_add_to_cart }}{% else %}{% url 'login' %}{% endif %}"><span>У кошик</span></a>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+
+{% elif not products %}
+    <h4 style="margin: 0 auto; text-align: center;"><em>У заданому ціновому діапазоні не знайдено жодного товару</em></h4>
+{% else %}
+    {% for prod in products %}
+        <div class="sidebar__product">
+
+            {% if prod in top_sale_products %}
+                <div {% if prod in seen_products %}style="margin-top: 20px;"{% endif %} class="badge badge-pill sidebar__label sidebar__label--recommend">Топ продаж</div>
+            {% endif %}
+
+            {% if prod in seen_products %}
+                <div class="badge badge-pill sidebar__label sidebar__label--recommend blue">Переглянуто</div>
+            {% endif %}
+
+            <a href="{{ prod.get_absolute_url }}" class="sidebar__imgblock">
+                {% if prod.related_images.first %}
+                    <img class="sidebar__img" src="{{ PORTAL_URL }}{{ prod.related_images.first }}" alt="product-img">
+                {% else %}
+                    <img class="sidebar__img noimg" src="{{ PORTAL_URL }}/media/assets/no-camera--v1.png" alt="product-img" style="opacity: .7;max-height: 90px; margin: 5px auto 5px auto;">
+                {% endif %}
+            </a>
+            <div class="product_info_div">
+                <a href="{{ prod.get_absolute_url }}" class="sidebar__title">
+                    <span>{{ prod.title}}</span>
+                </a>
+
+                <div class="sidebar__description">
+                    Код: <span>{{ prod.code }}</span>
+                </div>
+
+{#                {% if prod.discount %}#}
+{#                    <div class="discounts discounts--big">#}
+{#                        <span class="discounts__value">-{{ prod.discount }}%</span>#}
+{#                        <img class="discounts__image" src="{{ PORTAL_URL }}/media/assets/discount.png" alt="discounts">#}
+{#                    </div>#}
+{#                {% endif %}#}
+
+                <span class="remaining">На складі: {{ prod.remaining }}</span>
+
+                {% with prod as obj %}
+                    {% include 'include/staff.html' %}
+                {% endwith %}
+                <div class="sidebar__price">
+                    <div class="grey__group">
+{#                        {% if prod.discount %}#}
+{#                            <span class="grey_price">{{ prod.calc_no_discount_price }} грн.</span>#}
+{#                        {% endif %}#}
+                    </div>
+                    <span class="price">{{ prod.price }} грн.</span>
+                </div>
+                
+                {% if user.is_authenticated %}
+                    <a class="badge badge-pill sidebar__tocart sidebar__tocart--big" href="{% if user.is_authenticated %}{{ prod.get_absolute_add_to_cart }}{% else %}{% url 'login' %}{% endif %}"><span>У кошик</span></a>
+                {% endif %} 
+            </div>
+        </div>
+    {% endfor %}
+{% endif %}
+
+

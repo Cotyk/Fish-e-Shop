@@ -1,0 +1,120 @@
+{% extends 'fishapp/base.html' %}
+{% load static %}
+
+{% block additional_css %}{% endblock additional_css %}
+
+{% block meta_title %}Born to Fish - Магазин{% endblock meta_title %}
+
+{% block sidebar_additional_content %}{% endblock sidebar_additional_content %}
+
+{% block main--for_product %}main--for_product{% endblock main--for_product %}
+
+{% block content %}
+    <h2 class="recommend__title recommend__title--category">{{ sub_categories.first.category.name }}</h2>
+    <div class="category">
+    {% for sub_category in sub_categories %}
+        {% if sub_category.product__count %}
+        <a href="{% url 'catalog' slug=sub_category.category.slug sub_slug=sub_category.sub_slug %}?page=1" class="category__item">
+            <img class="category__image" src="{{ PORTAL_URL }}/media/{{ sub_category.sub_image }}" alt="category image">
+
+            <div class="category_title_div">
+                <span class="category__title">{{ sub_category.sub_name }}</span>
+            </div>
+        </a>
+        {% endif %}
+    {% endfor %}
+    </div>
+
+    {% if products %}
+    <div class="recommend">
+
+        <div class="sidebar__item sidebar__item--for_product sidebar__item--for_recommend">
+
+            <h2 class="recommend__title"> {% comment %} current_subcategory.product__count {% endcomment %}
+                {% if current_subcategory %}{{ current_subcategory.sub_name }} <em class="quantity-em">({{ products|length }} шт.)</em>
+                {% else %}{{ current_category.name}} <em class="quantity-em">({{ products|length }} шт.)</em>{% endif %}
+            </h2>
+
+            <div class="sidebar__products sidebar__products--for_recommend product__list__js">
+
+                {% for prod in products %}
+                    <div class="sidebar__product">
+
+                        {% if prod in top_sale_products %}
+                            <div {% if prod in seen_products %}style="margin-top: 20px;"{% endif %} class="badge badge-pill sidebar__label sidebar__label--recommend">Топ продаж</div>
+                        {% endif %}
+
+                        {% if prod in seen_products %}
+                            <div class="badge badge-pill sidebar__label sidebar__label--recommend blue">Переглянуто</div>
+                        {% endif %}
+
+                        <a href="{{ prod.get_absolute_url }}" class="sidebar__imgblock">
+                            {% if prod.related_images.first %}
+                                <img class="sidebar__img" src="{{ PORTAL_URL }}{{ prod.related_images.first }}" alt="product-img">
+                            {% else %}
+                                <img class="sidebar__img" src="{{ PORTAL_URL }}/media/assets/no-camera--v1.png" alt="product-img" style="opacity: .7;max-height: 90px; margin: 5px auto 5px auto;">
+                            {% endif %}
+                        </a>
+                        <div class="product_info_div">
+                            <a href="{{ prod.get_absolute_url }}" class="sidebar__title">
+                                <span>{{ prod.title}}</span>
+                            </a>
+
+                            <div class="sidebar__description">
+                                Код: <span>{{ prod.code }}</span>
+                            </div>
+
+{#                            {% if prod.discount %}#}
+{#                                <div class="discounts discounts--big">#}
+{#                                    <span class="discounts__value">-{{ prod.discount }}%</span>#}
+{#                                    <img class="discounts__image" src="{{ PORTAL_URL }}/media/assets/discount.png" alt="discounts">#}
+{#                                </div>#}
+{#                            {% endif %}#}
+
+                            <span class="remaining">На складі: {{ prod.remaining }}</span>
+
+
+                            {% include 'include/staff.html' %}
+                            <div class="sidebar__price">
+                                <div class="grey__group">
+{#                                    {% if prod.discount %}#}
+{#                                        <span class="grey_price">{{ prod.calc_no_discount_price }} грн.</span>#}
+{#                                    {% endif %}#}
+                                </div>
+                                <span class="price">{{ prod.price }} грн.</span>
+                            </div>
+
+                            <a class="badge badge-pill sidebar__tocart sidebar__tocart--big" href="{{ prod.get_absolute_add_to_cart }}"><span>У кошик</span></a>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+        <!-- </div> -->
+        </div> <!-- ./sidebar__products (catalog) -->
+
+    </div> <!-- ./recommend -->
+    {% endif %}
+{% endblock content %}
+
+
+{% block another_recommend %}{% endblock another_recommend %}
+
+{% block load_more %}
+    {% if is_paginated %}
+        <a href="{% url 'load_more' slug='test' sub_slug='test' %}" class="load_more">
+            <i class="fas fa-sync-alt"></i>
+            <span class="load_margin">показати ще</span>
+        </a>
+    {% endif %}
+{% endblock load_more %}
+
+{% block pagination %}
+    {% include 'include/pagination.html' %}
+{% endblock pagination %}
+
+
+{% block additional_js %}
+{#    <script src="{% static 'js/headercrumb.js'%}"></script>#}
+{#    <script src="{% static 'js/filter.js'%}"></script>#}
+{% endblock additional_js%}

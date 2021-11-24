@@ -19,7 +19,16 @@ function removeClass(textId, name) {
 	text.classList.remove(name);
 }
 
-
+let text = '<div class="price-slider">\n' +
+'                        <span>Від\n' +
+'                        <input id="input1_number" class="custom_input" type="number" value="0" min="0" max="12000"/> грн <br>До\n' +
+'                        <input id="input2_number" class="custom_input" type="number" value="12000" min="0" max="12000"/> грн</span>\n' +
+'                      <input id="input1_range" class="custom_input" value="0" min="0" max="12000" step="10" type="range"/>\n' +
+'                      <input id="input2_range" class="custom_input" value="12000" min="0" max="12000" step="10" type="range"/>\n' +
+'                      <svg width="100%" height="24">\n' +
+'                        <line x1="4" y1="0" x2="300" y2="0" stroke="#212121" stroke-width="12" stroke-dasharray="1 28"></line>\n' +
+'                      </svg>\n' +
+'                    </div>';
 
 function handleTabletChange(e, e1) {
 
@@ -30,7 +39,6 @@ function handleTabletChange(e, e1) {
 		} else {
 		  	removeClass('header', 'header--fixed')
 	    }
-	     
 	} else {
 
 		if (e.matches) {
@@ -39,7 +47,35 @@ function handleTabletChange(e, e1) {
 		  	removeClass('header', 'header--fixed');
 	    }
 	}
-  
+	try {
+		if (e.matches) {
+		let divv = document.getElementById('show_if_mobile_div');
+		let divv_screen = document.getElementById('show_if_mobile_div_screen');
+
+		if(!divv.innerHTML){
+			divv.innerHTML = text;
+		}
+
+		if(divv_screen.innerHTML){
+			divv_screen.innerHTML = '';
+		}
+
+		}else{
+			let divv = document.getElementById('show_if_mobile_div');
+			let divv_screen = document.getElementById('show_if_mobile_div_screen');
+
+			if(divv.innerHTML){
+				divv.innerHTML = '';
+			}
+
+			if(!divv_screen.innerHTML){
+				divv_screen.innerHTML = text;
+			}
+		}
+
+	} catch (e) {
+
+	}
 }
 
 mediaQuery.addListener(handleTabletChange)

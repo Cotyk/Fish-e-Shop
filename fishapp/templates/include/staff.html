@@ -1,0 +1,11 @@
+{% if user.is_staff %}
+    <div class="for_staff">
+        {% if obj.usd_price %}
+            <div class="usd_price">$: <span style="font-weight:bold;">{{ obj.usd_price }} </span>(${{ obj.calc_usd_discount_price }})</div>
+        {% endif %}
+        {% if obj.uah_price %}
+            <div class="uah_price">Грн: <span style="font-weight:bold;">{{ obj.uah_price }} </span>({{ obj.calc_uah_discount_price }}грн.)</div>
+        {% endif %}
+        {% if obj.discount %}<div class="disc">Знижка: <span style="font-weight:bold;">{{ obj.discount}}%</span></div>{% endif %}
+    </div>
+{% endif %}

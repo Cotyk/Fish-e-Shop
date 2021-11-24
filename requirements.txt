@@ -2,3 +2,10 @@ django==3.2.3
 Pillow==8.2.0
 django-crispy-forms
 psycopg2-binary
+django-absoluteuri
+django-template-maths
+sshtunnel
+mysql-connector-python
+django-cleanup
+
+

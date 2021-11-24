@@ -33,3 +33,9 @@ trynewblog/prod_settings.py
 *backend/*/migrations/*
 !*backend/*/migrations
 !*backend/*/migrations/__init__.py
+
+assets/*
+backups/*
+my_log.txt
+test.py
+testiks.py
