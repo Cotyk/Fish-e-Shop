@@ -1,7 +1,7 @@
 Overview
 ========
 
-Fishing e-commerce web application.
+Fishing e-commerce web application for borntofish.org .
 
 It allows you to buy cool fishing stuff under the borntofish.org company.
 
